@@ -1,0 +1,23 @@
+.menu {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+}
+
+.link {
+    text-decoration: none;
+    display: inline-block;
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    font-size: 32px;
+}
+
+.link:global(.active) {
+    border: 1px solid orange;
+    background-color: orange;
+    color: white;
+    pointer-events: none;
+}

@@ -1,4 +1,9 @@
+import { getMostPopular } from "shared/services/api";
+
 export const Home = () => {
+
+
+  
   return (
     <main>
       <h1>Home</h1>
