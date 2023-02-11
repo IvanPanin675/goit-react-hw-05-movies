@@ -31,9 +31,3 @@ export const getIdMovie = async (id) => {
   console.log('po ID - ', data)
   return data;
 };
-
-export const getIdMovieImage = async (id) => {
-  const { data } = await instans.get(`movie/${id}/images`);
-  console.log('po ID - ', data)
-  return data;
-};
