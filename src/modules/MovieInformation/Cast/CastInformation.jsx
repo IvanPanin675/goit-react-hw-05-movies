@@ -32,7 +32,7 @@ export const CastInformation = () => {
       <ul>
         {cast.map(({ id, name, character, profile_path }) => (
           <li key={id}>
-            <img src={`https://image.tmdb.org/t/p/w500/${profile_path}`}></img>
+            {profile_path && <img src={`https://image.tmdb.org/t/p/w500/${profile_path}`} alt=""></img>}
             <p>{name}</p>
             <p>{character}</p>
           </li>

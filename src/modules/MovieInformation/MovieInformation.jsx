@@ -35,10 +35,10 @@ export const MovieInformation = () => {
       {loading && <Loader />}
       <button>Go BACK</button>
       <div className={css.afisha}>
-        <img
+        {movie.poster_path && <img
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt=""
-        ></img>
+        ></img>}
         <div>
           <h1>{movie.title}</h1>
           <p>User Score: {Math.round(movie.vote_average * 10)}%</p>
