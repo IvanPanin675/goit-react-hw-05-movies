@@ -1,4 +1,4 @@
-import SearchMovies from 'modules/PopularMovies/PopularMovies';
+import SearchMovies from 'modules/SearchMovies/SearchMovies';
 
 export const Movies = () => {
   return (

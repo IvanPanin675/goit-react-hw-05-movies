@@ -11,7 +11,7 @@ const instans = axios.create({
 });
 
 export const searchMovies = async query => {
-  const { data } = await instans.get('/', {
+  const { data } = await instans.get('search/movie', {
     params: {
       query,
     },

@@ -27,8 +27,6 @@ export const MovieInformation = () => {
       }
     };
 
-    console.log(id)
-
     fetchMovieId();
   }, [id]);
 
@@ -37,10 +35,12 @@ export const MovieInformation = () => {
       {loading && <Loader />}
       <button>Go BACK</button>
       <div className={css.afisha}>
-        {movie.poster_path && <img
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          alt=""
-        ></img>}
+        {movie.poster_path && (
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            alt=""
+          ></img>
+        )}
         <div>
           <h1>{movie.title}</h1>
           <p>User Score: {Math.round(movie.vote_average * 10)}%</p>
@@ -54,10 +54,13 @@ export const MovieInformation = () => {
           </ul>
         </div>
       </div>
-
       <div className={css.menu}>
-        <NavLink className={css.link} to="cast">Cast</NavLink>
-        <NavLink className={css.link} to="reviews">Reviews</NavLink>
+        <NavLink className={css.link} to="cast">
+          Cast
+        </NavLink>
+        <NavLink className={css.link} to="reviews">
+          Reviews
+        </NavLink>
       </div>
       <Outlet />
     </>
