@@ -15,6 +15,9 @@ export const ReviewsInformation = () => {
       try {
         setLoading(true);
         const data = await getReviews(id);
+        if (data.results === reviews) {
+          setReviews([{ id: 1, content: "FIGNYA We don't have any reviews for this movie"}]);
+        }
         setReviews(data.results);
       } catch (error) {
         console.log(error.message);
@@ -26,16 +29,17 @@ export const ReviewsInformation = () => {
     fetchReviews();
   }, []);
   console.log(reviews);
+  const rews = reviews.map(({ id, author, content }) => (
+            <li key={id}>
+              <h3>{author}</h3>
+              <p>{content}</p>
+            </li>
+          ))
   return (
     <>
       {loading && <Loader />}
       <ul>
-        {reviews.map(({ id, author, content }) => (
-          <li key={id}>
-            <h3>{author}</h3>
-            <p>{content}</p>
-          </li>
-        ))}
+        {rews}  
       </ul>
     </>
   );
