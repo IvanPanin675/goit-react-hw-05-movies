@@ -8,7 +8,7 @@ import PopularMovie from 'modules/PopularMovies/PopularMovie/PopularMovie';
 const SearchMovies = () => {
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState('');
-  const [movies, setMovies] = useState({});
+  const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState('');
 
   useEffect(() => {
@@ -16,7 +16,6 @@ const SearchMovies = () => {
       try {
         setLoading(true);
         const data = await searchMovies(query);
-        console.log(data);
         setMovies([...data.results]);
         setQuery('');
       } catch (error) {
