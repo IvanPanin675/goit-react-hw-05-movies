@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getIdMovie } from 'shared/services/api';
-import { Routes, Route } from 'react-router-dom';
 import { NavLink, Outlet } from 'react-router-dom';
-import { Cast } from 'pages/Cast';
 import Loader from 'modules/Loader/Loader';
 
 import css from './movieInformation.module.css';
@@ -20,7 +18,6 @@ export const MovieInformation = () => {
       try {
         setLoading(true);
         const data = await getIdMovie(id);
-        console.log(data);
         setMovie(data);
         setGenres(data.genres);
       } catch (error) {
@@ -32,8 +29,6 @@ export const MovieInformation = () => {
 
     fetchMovieId();
   }, []);
-
-  console.log(genres);
 
   return (
     <>
@@ -61,8 +56,8 @@ export const MovieInformation = () => {
       <div>
         <NavLink to="cast">Cast</NavLink>
         <NavLink to="reviews">Reviews</NavLink>
-          </div>
-          <Outlet/>
+      </div>
+      <Outlet />
     </>
   );
 };

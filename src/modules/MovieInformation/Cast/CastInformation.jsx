@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCredits } from 'shared/services/api';
+import Loader from 'modules/Loader/Loader';
 
 export const CastInformation = () => {
   const [loading, setLoading] = useState(false);
@@ -26,14 +27,17 @@ export const CastInformation = () => {
   }, []);
   console.log(cast);
   return (
-    <ul>
-      {cast.map(({ id, name, character, profile_path }) => (
-        <li key={id}>
-          <img src={`https://image.tmdb.org/t/p/w500/${profile_path}`}></img>
-          <p>{name}</p>
-          <p>{character}</p>
-        </li>
-      ))}
-    </ul>
+    <>
+      {loading && <Loader />}
+      <ul>
+        {cast.map(({ id, name, character, profile_path }) => (
+          <li key={id}>
+            <img src={`https://image.tmdb.org/t/p/w500/${profile_path}`}></img>
+            <p>{name}</p>
+            <p>{character}</p>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };

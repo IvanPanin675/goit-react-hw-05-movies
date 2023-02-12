@@ -9,12 +9,9 @@ import { Cast } from 'pages/Cast';
 import { Reviews } from 'pages/Reviews';
 
 export const App = () => {
-
-
-
   return (
     <>
-      <Navbar/>
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -25,8 +22,6 @@ export const App = () => {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-
-      
     </>
   );
 };

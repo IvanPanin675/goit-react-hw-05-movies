@@ -1,11 +1,9 @@
-import { MovieInformation } from "modules/MovieInformation/MovieInformation";
-
+import { MovieInformation } from 'modules/MovieInformation/MovieInformation';
 
 export const SinglMovie = () => {
-
   return (
     <>
-      <MovieInformation/>
+      <MovieInformation />
     </>
   );
 };

@@ -5,18 +5,18 @@ import axios from 'axios';
 const instans = axios.create({
   baseURL: 'https://api.themoviedb.org/3/',
   params: {
-      api_key: 'bf112b0bdd94b872432eacde842e62d8',
-      language: 'en-US',
+    api_key: 'bf112b0bdd94b872432eacde842e62d8',
+    language: 'en-US',
   },
 });
 
-export const searchMovies = async (query) => {
+export const searchMovies = async query => {
   const { data } = await instans.get('/', {
     params: {
       query,
     },
   });
-  console.log('query - ',data);
+  console.log('query - ', data);
   return data;
 };
 
@@ -25,19 +25,17 @@ export const getMostPopular = async () => {
   return data;
 };
 
-export const getIdMovie = async (id) => {
+export const getIdMovie = async id => {
   const { data } = await instans.get(`movie/${id}`);
   return data;
 };
 
-export const getCredits = async (id) => {
+export const getCredits = async id => {
   const { data } = await instans.get(`/movie/${id}/credits`);
-  console.log('credits -- ', data)
   return data;
 };
 
-export const getReviews = async (id) => {
+export const getReviews = async id => {
   const { data } = await instans.get(`/movie/${id}/reviews`);
-  console.log('reviews -- ', data)
   return data;
 };

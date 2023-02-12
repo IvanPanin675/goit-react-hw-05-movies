@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'shared/services/api';
+import Loader from 'modules/Loader/Loader';
 
 export const ReviewsInformation = () => {
   const [loading, setLoading] = useState(false);
@@ -26,13 +27,16 @@ export const ReviewsInformation = () => {
   }, []);
   console.log(reviews);
   return (
-    <ul>
-      {reviews.map(({ id, author, content}) => (
-        <li key={id}>
-          <h3>{author}</h3>
-          <p>{content}</p>
-        </li>
-      ))}
-    </ul>
+    <>
+      {loading && <Loader />}
+      <ul>
+        {reviews.map(({ id, author, content }) => (
+          <li key={id}>
+            <h3>{author}</h3>
+            <p>{content}</p>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
