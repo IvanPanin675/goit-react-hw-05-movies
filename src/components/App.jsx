@@ -9,6 +9,7 @@ import { Cast } from 'pages/Cast';
 import { Reviews } from 'pages/Reviews';
 
 export const App = () => {
+  
   return (
     <>
       <Navbar />

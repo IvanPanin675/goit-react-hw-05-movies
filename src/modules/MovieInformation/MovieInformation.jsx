@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getIdMovie } from 'shared/services/api';
 import { NavLink, Outlet } from 'react-router-dom';
 import Loader from 'modules/Loader/Loader';
@@ -12,6 +12,8 @@ export const MovieInformation = () => {
   const [genres, setGenres] = useState([]);
 
   const { id } = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMovieId = async () => {
@@ -30,10 +32,15 @@ export const MovieInformation = () => {
     fetchMovieId();
   }, [id]);
 
+  const goBack = () => {
+    navigate(`/movies?:query=`, { replace: true })
+  };
+
   return (
     <>
+      <button onClick={goBack}>GO BACK</button>
       {loading && <Loader />}
-      <button>Go BACK</button>
+
       <div className={css.afisha}>
         {movie.poster_path && (
           <img

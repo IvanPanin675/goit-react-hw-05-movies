@@ -11,12 +11,12 @@ const instans = axios.create({
 });
 
 export const searchMovies = async query => {
+  console.log(query)
   const { data } = await instans.get('search/movie', {
     params: {
       query,
     },
   });
-  console.log('query - ', data);
   return data;
 };
 

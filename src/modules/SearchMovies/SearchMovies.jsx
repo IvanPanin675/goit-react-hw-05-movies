@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import Loader from 'modules/Loader/Loader';
 
@@ -7,9 +8,12 @@ import PopularMovie from 'modules/PopularMovies/PopularMovie/PopularMovie';
 
 const SearchMovies = () => {
   const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState('');
+  // const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query");
+  console.log(query)
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -17,7 +21,7 @@ const SearchMovies = () => {
         setLoading(true);
         const data = await searchMovies(query);
         setMovies([...data.results]);
-        setQuery('');
+
       } catch (error) {
         console.log(error.message);
       } finally {
@@ -38,7 +42,7 @@ const SearchMovies = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setQuery(search);
+    setSearchParams({query: search});
   };
 
   return (
