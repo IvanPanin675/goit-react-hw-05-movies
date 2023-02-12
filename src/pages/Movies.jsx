@@ -1,7 +1,9 @@
+import SearchMovies from 'modules/PopularMovies/PopularMovies';
+
 export const Movies = () => {
   return (
-    <div>
-      <h2>Search</h2>
-    </div>
+    <>
+      <SearchMovies />
+    </>
   );
 };
