@@ -24,7 +24,7 @@ export const CastInformation = () => {
     };
 
     fetchCast();
-  }, []);
+  }, [id]);
   console.log(cast);
   return (
     <>

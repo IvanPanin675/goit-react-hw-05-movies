@@ -26,7 +26,7 @@ export const ReviewsInformation = () => {
     };
 
     fetchReviews();
-  }, []);
+  }, [id]);
 
   const rews = reviews.map(({ id, author, content }) => (
     <li key={id}>

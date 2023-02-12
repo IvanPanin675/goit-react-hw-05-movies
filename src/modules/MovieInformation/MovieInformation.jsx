@@ -27,8 +27,10 @@ export const MovieInformation = () => {
       }
     };
 
+    console.log(id)
+
     fetchMovieId();
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -53,9 +55,9 @@ export const MovieInformation = () => {
         </div>
       </div>
 
-      <div>
-        <NavLink to="cast">Cast</NavLink>
-        <NavLink to="reviews">Reviews</NavLink>
+      <div className={css.menu}>
+        <NavLink className={css.link} to="cast">Cast</NavLink>
+        <NavLink className={css.link} to="reviews">Reviews</NavLink>
       </div>
       <Outlet />
     </>
