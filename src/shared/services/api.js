@@ -16,18 +16,28 @@ export const searchMovies = async (query) => {
       query,
     },
   });
-  console.log(data);
+  console.log('query - ',data);
   return data;
 };
 
 export const getMostPopular = async () => {
   const { data } = await instans.get('movie/popular');
-
   return data;
 };
 
 export const getIdMovie = async (id) => {
   const { data } = await instans.get(`movie/${id}`);
-  console.log('po ID - ', data)
+  return data;
+};
+
+export const getCredits = async (id) => {
+  const { data } = await instans.get(`/movie/${id}/credits`);
+  console.log('credits -- ', data)
+  return data;
+};
+
+export const getReviews = async (id) => {
+  const { data } = await instans.get(`/movie/${id}/reviews`);
+  console.log('reviews -- ', data)
   return data;
 };
