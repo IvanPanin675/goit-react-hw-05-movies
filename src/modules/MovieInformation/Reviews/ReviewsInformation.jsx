@@ -8,7 +8,6 @@ export const ReviewsInformation = () => {
   const [reviews, setReviews] = useState([]);
 
   const { id } = useParams();
-  console.log(id);
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -16,7 +15,7 @@ export const ReviewsInformation = () => {
         setLoading(true);
         const data = await getReviews(id);
         if (data.results === reviews) {
-          setReviews([{ id: 1, content: "FIGNYA We don't have any reviews for this movie"}]);
+          setReviews([]);
         }
         setReviews(data.results);
       } catch (error) {
@@ -28,18 +27,19 @@ export const ReviewsInformation = () => {
 
     fetchReviews();
   }, []);
-  console.log(reviews);
+
   const rews = reviews.map(({ id, author, content }) => (
-            <li key={id}>
-              <h3>{author}</h3>
-              <p>{content}</p>
-            </li>
-          ))
+    <li key={id}>
+      <h3>{author}</h3>
+      <p>{content}</p>
+    </li>
+  ));
+
   return (
     <>
       {loading && <Loader />}
       <ul>
-        {rews}  
+        {rews.length === 0 ? "We don't have any reviews for this movie" : rews}
       </ul>
     </>
   );
