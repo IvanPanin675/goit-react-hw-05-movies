@@ -14,9 +14,6 @@ export const ReviewsInformation = () => {
       try {
         setLoading(true);
         const data = await getReviews(id);
-        if (data.results === reviews) {
-          setReviews([]);
-        }
         setReviews(data.results);
       } catch (error) {
         console.log(error.message);
@@ -25,10 +22,8 @@ export const ReviewsInformation = () => {
       }
     };
 
-
-
     fetchReviews();
-  }, [id,setLoading]);
+  }, [id,setReviews,setLoading]);
 
   const rews = reviews.map(({ id, author, content }) => (
     <li key={id}>
