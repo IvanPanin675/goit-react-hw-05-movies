@@ -1,9 +1,11 @@
 import { MovieInformation } from 'modules/MovieInformation/MovieInformation';
 
-export const SinglMovie = () => {
+const SinglMovie = () => {
   return (
     <>
       <MovieInformation />
     </>
   );
 };
+
+export default SinglMovie;

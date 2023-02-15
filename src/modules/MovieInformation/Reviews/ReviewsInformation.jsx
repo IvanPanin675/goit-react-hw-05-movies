@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { getReviews } from 'shared/services/api';
 import Loader from 'modules/Loader/Loader';
 
+
+
 export const ReviewsInformation = () => {
   const [loading, setLoading] = useState(false);
   const [reviews, setReviews] = useState([]);

@@ -1,9 +1,11 @@
 import SearchMovies from 'modules/SearchMovies/SearchMovies';
 
-export const Movies = () => {
+const Movies = () => {
   return (
     <>
       <SearchMovies />
     </>
   );
 };
+
+export default Movies;

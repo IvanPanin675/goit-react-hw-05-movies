@@ -1,9 +1,11 @@
 import PopularMovies from 'modules/PopularMovies/PopularMovies';
 
-export const Home = () => {
+const Home = () => {
   return (
     <>
       <PopularMovies />
     </>
   );
 };
+
+export default Home;

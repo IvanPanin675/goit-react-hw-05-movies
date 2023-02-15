@@ -1,9 +1,11 @@
 import { CastInformation } from 'modules/MovieInformation/Cast/CastInformation';
 
-export const Cast = () => {
+const Cast = () => {
   return (
     <>
       <CastInformation />
     </>
   );
 };
+
+export default Cast;

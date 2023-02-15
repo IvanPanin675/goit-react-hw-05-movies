@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { getIdMovie } from 'shared/services/api';
 import { NavLink, Outlet } from 'react-router-dom';
 import Loader from 'modules/Loader/Loader';
@@ -14,6 +14,9 @@ export const MovieInformation = () => {
   const { id } = useParams();
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const from = location.state?.from || '/';
 
   useEffect(() => {
     const fetchMovieId = async () => {
@@ -32,9 +35,9 @@ export const MovieInformation = () => {
     fetchMovieId();
   }, [id]);
 
-  const goBack = () => {
-    navigate(`/movies?:query=`, { replace: true })
-  };
+  const goBack = useCallback(() => {
+    navigate(from);
+  }, [navigate, from]);
 
   return (
     <>
@@ -45,6 +48,7 @@ export const MovieInformation = () => {
         {movie.poster_path && (
           <img
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            className={css.movieImg}
             alt=""
           ></img>
         )}
@@ -62,10 +66,10 @@ export const MovieInformation = () => {
         </div>
       </div>
       <div className={css.menu}>
-        <NavLink className={css.link} to="cast">
+        <NavLink className={css.link} to="cast" state={{from}}>
           Cast
         </NavLink>
-        <NavLink className={css.link} to="reviews">
+        <NavLink className={css.link} to="reviews" state={{from}}>
           Reviews
         </NavLink>
       </div>

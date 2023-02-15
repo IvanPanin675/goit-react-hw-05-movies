@@ -10,10 +10,8 @@ const SearchMovies = () => {
   const [loading, setLoading] = useState(false);
   // const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
-  const [search, setSearch] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query");
-  console.log(query)
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -35,14 +33,10 @@ const SearchMovies = () => {
     fetchMovie();
   }, [query]);
 
-  const handleChange = ({ target }) => {
-    const { value } = target;
-    setSearch(value);
-  };
-
   const handleSubmit = e => {
     e.preventDefault();
-    setSearchParams({query: search});
+    const form = e.currentTarget;
+    setSearchParams({query: form.elements.searchname.value});
   };
 
   return (
@@ -52,9 +46,8 @@ const SearchMovies = () => {
           <span></span>Search
         </button>
         <input
-          value={search}
-          onChange={handleChange}
           type="text"
+          name="searchname"
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"

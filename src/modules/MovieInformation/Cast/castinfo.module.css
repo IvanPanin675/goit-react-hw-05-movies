@@ -1,0 +1,10 @@
+.castImg {
+    height: 250px;
+}
+
+.itemCast {
+    display: inline-block;
+    margin: 10px;
+    border: 1px solid black;
+    padding: 5px;
+}

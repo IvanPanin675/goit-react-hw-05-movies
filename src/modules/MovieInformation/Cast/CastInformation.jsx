@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { getCredits } from 'shared/services/api';
 import Loader from 'modules/Loader/Loader';
 
+import css from './castinfo.module.css'
+
 export const CastInformation = () => {
   const [loading, setLoading] = useState(false);
   const [cast, setCast] = useState([]);
@@ -29,10 +31,11 @@ export const CastInformation = () => {
       {loading && <Loader />}
       <ul>
         {cast.map(({ id, name, character, profile_path }) => (
-          <li key={id}>
+          <li key={id} className={css.itemCast}>
             {profile_path && (
               <img
                 src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
+                className={css.castImg}
                 alt=""
               ></img>
             )}

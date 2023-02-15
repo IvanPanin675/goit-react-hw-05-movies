@@ -1,9 +1,11 @@
 import { ReviewsInformation } from 'modules/MovieInformation/Reviews/ReviewsInformation';
 
-export const Reviews = () => {
+const Reviews = () => {
   return (
     <>
       <ReviewsInformation />
     </>
   );
 };
+
+export default Reviews;
