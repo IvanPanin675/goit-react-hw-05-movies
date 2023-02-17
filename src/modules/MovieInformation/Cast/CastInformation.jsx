@@ -26,11 +26,7 @@ export const CastInformation = () => {
     fetchCast();
   }, [id]);
 
-  return (
-    <>
-      {loading && <Loader />}
-      <ul>
-        {cast.map(({ id, name, character, profile_path }) => (
+  const castes = cast.map(({ id, name, character, profile_path }) => (
           <li key={id} className={css.itemCast}>
             {profile_path && (
               <img
@@ -42,7 +38,13 @@ export const CastInformation = () => {
             <p>{name}</p>
             <p>{character}</p>
           </li>
-        ))}
+        ));
+
+  return (
+    <>
+      {loading && <Loader />}
+      <ul>
+        {castes.length === 0 ? "We don't have any cast for this movie" : castes}
       </ul>
     </>
   );
